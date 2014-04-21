@@ -1,12 +1,10 @@
-" Basics {
 set nocompatible
 set noexrc
-"set cpoptions=aABceFsmq
+set cpoptions=aABceFsmq
 syntax on
 set t_Co=16
 hi MatchParen ctermfg=black ctermbg=red
-" }
-filetype off                  " required!
+filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -15,18 +13,11 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 
-Bundle "Hackerpilot/DCD", {'rtp': 'editors/vim'}
-
-" General {
 filetype plugin indent on
-"set autochdir
 set backspace=indent,eol,start
-"set backup
-"set backupdir=~/.vim/backup
-"set clipboard+=unnamed
-"set directory=~/.vim/tmp " swap dir
+set clipboard=unnamedplus
 set fileformats=unix,dos,mac
-set undolevels=100
+set undolevels=150
 "set hidden
 "set iskeyword+=_,$,@,%,#
 au BufReadPost SCons* set ft=python
@@ -235,7 +226,7 @@ highlight lCursor guifg=NONE guibg=Cyan
 "nmap <c-f> :cs find g <c-r>=expand("<cword>")<cr><cr>
 imap <c-space> <c-x><c-o>
 
-set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;!@#$%&*`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
+set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 
 " Folding {
 set foldenable

@@ -31,3 +31,4 @@ export PROMPT_COMMAND='export PS1="╔ [$GREEN\u@\h $RED\W$NORM] \
 $(parse_git_branch)[$FOURT$(date +"%d.%m.%y %H:%M:%S")$NORM]\n\
 ╚ $(if [ "$EUID" -eq "0" ]; then echo "#"; else echo "$"; fi) "'
 
+if [ -e /usr/bin/vimx ]; then alias vim='/usr/bin/vimx'; fi

@@ -1,0 +1,58 @@
+urxvt*scrollBar: False
+urxvt*saveLines: 3000
+
+urxvt*reverseVideo: false
+urxvt*reverseWrap: true
+urxvt*fullCursor: true
+urxvt*scrollTtyOutput: on
+urxvt*scrollKey: on
+urxvt*eightBitInput: false
+!urxvt*pointerColor: white
+!urxvt*pointerShape: left_ptr 
+urxvt*charClass: 37:48,45-47:48,58:48,64:48,126:48
+
+urxvt*foreground: #DCDCCC
+urxvt*background: #2F2F2F
+urxvt*cursorColor: #DDDDFF
+urxvt*cursorColor2: #020202
+
+urxvt*color0: #3F3F5F
+!!green
+urxvt*color1: #E07050
+!!red
+urxvt*color2: #60B48A
+urxvt*color3: #DFAF8F
+urxvt*color4: #4F5F6F
+!!escape char in string
+urxvt*color5: #DC8CC2
+urxvt*color6: #8CD0D3
+!!selection
+urxvt*color7: #104050
+urxvt*color8: #709080
+urxvt*color9: #FC5555
+urxvt*color10: #72D5A3
+urxvt*color11: #F0DFAF
+urxvt*color12: #94BFF3
+urxvt*color13: #EC93D3
+urxvt*color14: #E3E0E3
+urxvt*color15: white
+
+urxvt*colorBD: #709080
+!!!vim file open browse
+urxvt*colorUL: #4C7CFC
+!
+urxvt*colorBDMode: on
+urxvt*colorULMode: on
+urxvt*underLine: on
+
+urxvt*boldFont: fixed
+urxvt*loginShell: true
+
+urxvt.font: xft:DejaVu Sans Mono:size=12:autohint=true:antialias=true:hinting=true
+urxvt.boldFont: xft:DejaVu Sans Mono:bold:size=12:autohint=true:antialias=true:hinting=true
+urxvt.italicFont: xft:DejaVu Sans Mono:italic:size=12:autohint=true:antialias=true:hinting=true
+urxvt.boldItalicFont: xft:DejaVu Sans Mono:italic:bold:size=12:autohint=true:antialias=true:hinting=true
+
+urxvt*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
+
+urxvt*utf8: true
