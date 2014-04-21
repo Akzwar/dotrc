@@ -8,9 +8,6 @@ filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-
-" let Vundle manage Vundle
-" required! 
 Bundle 'gmarik/vundle'
 
 filetype plugin indent on
@@ -18,32 +15,18 @@ set backspace=indent,eol,start
 set clipboard=unnamedplus
 set fileformats=unix,dos,mac
 set undolevels=150
-"set hidden
-"set iskeyword+=_,$,@,%,#
-au BufReadPost SCons* set ft=python
-au BufReadPost scons* set ft=python
-"au BufNewFile,BufRead *.cu set ft=cu
-"au BufNewFile,BufRead *.cuh set ft=cu
-au BufReadPost *.cuh set syntax=cu
-au BufReadPost *.vert set syntax=glsl
-au BufReadPost *.frag set syntax=glsl
+au BufNewFile,BufRead SCons* set ft=python
+au BufNewFile,BufRead scons* set ft=python
 au BufNewFile,BufRead *.md set ft=markdown
 
-au BufNewFile,BufRead *.rb set shiftwidth=2
-au BufNewFile,BufRead *.rb set softtabstop=2
-au BufNewFile,BufRead *.rb set tabstop=2
-
-au BufNewFile,BufRead *.erb set shiftwidth=2
-au BufNewFile,BufRead *.erb set softtabstop=2
-au BufNewFile,BufRead *.erb set tabstop=2
-
-au BufNewFile,BufRead Gemfile,Rakefile set shiftwidth=2
-au BufNewFile,BufRead Gemfile,Rakefile set softtabstop=2
-au BufNewFile,BufRead Gemfile,Rakefile set tabstop=2
+au BufNewFile,BufRead *.rb,*.erb,Gemfile,Rakefile set shiftwidth=2
+au BufNewFile,BufRead *.rb,*.erb,Gemfile,Rakefile set softtabstop=2
+au BufNewFile,BufRead *.rb,*.erb,Gemfile,Rakefile set tabstop=2
 
 if has('mouse')
   set mouse=a
 endif
+
 "set noerrorbells
 "set whichwrap=b,s,h,l,<,>,~,[,]
 set wildmenu
