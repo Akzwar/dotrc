@@ -1,0 +1,222 @@
+# This configuration uses Mod1 and Mod3. Make sure they are mapped properly using xev(1)
+# and xmodmap(1). Usually, Mod1 is Alt (Alt_L) and Mod3 is Windows (Super_L)
+
+# ISO 10646 = Unicode
+#font -misc-fixed-medium-r-normal--12-120-75-75-C-70-iso10646-1
+#font -*-terminus-medium-r-*-*-14-*-*-*-*-*-iso10646-*
+#font xft:Monospace 11
+font pango:DejaVu Sans Mono 12
+
+set $mod Mod4
+
+# Use Mouse+Mod1 to drag floating windows to their wanted position
+floating_modifier $mod
+# xprop for get class name
+for_window [class="XTerm"] border 1pixel
+for_window [class="URxvt"] border 1pixel
+for_window [class="(?i)google-chrome"] border 1pixel
+for_window [class="(?i)nautilus"] border 1pixel
+for_window [class="Nautilus" instance="file_progress"] floating enable
+
+# starts a new terminal
+#bindsym $mod+Return exec /usr/bin/xterm
+#bindcode $mod+36 exec /usr/bin/xterm
+bindcode $mod+36 exec /usr/bin/urxvt
+
+# Mod1+Shift+q kills the current client
+bindcode $mod+Shift+24 kill
+#bindcode $mod+Shift+54 kill
+
+# Fullscreen (Mod1+f)
+bindcode $mod+41 fullscreen
+
+# Stacking (mod+s)
+bindcode $mod+39 layout stacking
+
+# Tabbed (Mod1+w)
+bindcode $mod+25 layout tabbed
+
+# Default (Mod1+e)
+bindcode $mod+26 layout default
+
+# Toggle tiling/floating of the current window (Mod1+Shift+Space)
+bindcode $mod+Shift+65 floating toggle
+
+# Go into the tiling layer / floating layer, depending on whether
+# the current window is tiling / floating (Mod1+t)
+bindcode $mod+28 focus mode_toggle
+
+bind $mod+23 workspace back_and_forth
+
+# Focus (Mod1+j/k/l/;)
+bindcode $mod+43 focus left
+bindcode $mod+44 focus down
+bindcode $mod+45 focus up
+bindcode $mod+46 focus right
+# (alternatively, you can use the cursor keys:)
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Focus Container (Mod3+j/k/l/;)
+bindcode Mod3+43 focus parent; focus left
+bindcode Mod3+44 focus parent; focus down
+bindcode Mod3+45 focus parent; focus up
+bindcode Mod3+46 focus parent; focus right
+# (alternatively, you can use the cursor keys:)
+bindsym Mod3+Left focus parent; focus left
+bindsym Mod3+Down focus parent; focus down
+bindsym Mod3+Up focus parent; focus up
+bindsym Mod3+Right focus parent; focus right
+
+# Snap (Mod1+Control+j/k/l/;)
+bindcode $mod+Control+43 layout stacking
+bindcode $mod+Control+44 layout stacking
+bindcode $mod+Control+45 layout stacking
+bindcode $mod+Control+46 layout stacking
+# (alternatively, you can use the cursor keys:)
+bindsym $mod+Control+Left layout stacking
+bindsym $mod+Control+Down layout stacking
+bindsym $mod+Control+Up layout stacking
+bindsym $mod+Control+Right layout stacking
+
+# Move (Mod1+Shift+j/k/l/;)
+bindcode $mod+Shift+43 move left
+bindcode $mod+Shift+44 move down
+bindcode $mod+Shift+45 move up
+bindcode $mod+Shift+46 move right
+# (alternatively, you can use the cursor keys:)
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Move Container (Mod3+Shift+j/k/l/;)
+#bind Mod3+Shift+44 wcmh
+#bind Mod3+Shift+45 wcmj
+#bind Mod3+Shift+46 wcmk
+#bind Mod3+Shift+47 wcml
+
+# Workspaces (Mod1+1/2/…)
+bindcode $mod+10 workspace 1
+bindcode $mod+11 workspace 2
+bindcode $mod+12 workspace 3
+bindcode $mod+13 workspace 4
+bindcode $mod+14 workspace 5
+bindcode $mod+15 workspace 6
+bindcode $mod+16 workspace 7
+bindcode $mod+17 workspace 8
+bindcode $mod+18 workspace 9
+bindcode $mod+19 workspace 10
+
+# Move to Workspaces
+bindcode $mod+Shift+10 move container to workspace 1
+bindcode $mod+Shift+11 move container to workspace 2
+bindcode $mod+Shift+12 move container to workspace 3
+bindcode $mod+Shift+13 move container to workspace 4
+bindcode $mod+Shift+14 move container to workspace 5
+bindcode $mod+Shift+15 move container to workspace 6
+bindcode $mod+Shift+16 move container to workspace 7
+bindcode $mod+Shift+17 move container to workspace 8
+bindcode $mod+Shift+18 move container to workspace 9
+bindcode $mod+Shift+19 move container to workspace 10
+
+# Mod1+v starts dmenu and launches the selected application
+# for now, we don’t have a launcher of our own.
+bindcode $mod+33 exec /usr/bin/dmenu_run
+
+# Mod1+Shift+q exits i3
+bindcode $mod+Shift+26 exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# mod+Shift+r restarts i3 inplace
+bindcode $mod+Shift+27 restart
+
+#bindcode $mod+42 exec optirun google-chrome
+bindcode $mod+42 exec google-chrome
+
+# mod+n
+bindcode $mod+57 exec nautilus
+
+# mod+m
+bindcode $mod+58 exec pavucontrol
+
+bindcode 107 exec ksnapshot
+
+# spec keys no notebook
+bindcode 232 exec xbacklight -dec 5
+bindcode 233 exec xbacklight -inc 10
+
+# mod(win)+Alt+d dpms off
+bindcode $mod+Mod1+40 exec xset s off && xset -dpms && xbacklight -set 50% -steps 2
+# mod(win)+Alt+o dpms on
+bindcode $mod+Mod1+32 exec xset s on && xset +dpms && xbacklight -set 40% -steps 2
+
+#bindcode 121 exec amixer -c 0 set Master mute
+bindcode 122 exec amixer -c 0 set Master 5%-
+bindcode 123 exec amixer -c 0 set Master 5%+
+
+# mod(win)+V mod(win)+B split workspace differently
+bindcode $mod+55 exec i3-msg 'split vertical'
+bindcode $mod+56 exec i3-msg 'split horisontal'
+
+# mod(win)+Esc lock screen
+bindcode $mod+9  exec i3lock -n -c000000 --pointer=win -b -d
+# close notebook
+#bindcode 151 exec i3lock -n -c000000 --pointer=win -b -d
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindcode 43   resize shrink width 10 px or 10 ppt
+        bindcode 44   resize grow height 10 px or 10 ppt
+        bindcode 45   resize shrink height 10 px or 10 ppt
+        bindcode 46   resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left  resize shrink width 10 px or 10 ppt
+        bindsym Down  resize grow height 10 px or 10 ppt
+        bindsym Up    resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindcode $mod+27 mode "resize"
+
+# The IPC interface allows programs like an external workspace bar
+# (i3-wsbar) or i3-msg (can be used to "remote-control" i3) to work.
+ipc-socket ~/.i3/ipc.sock
+
+bar {
+    position           top
+    tray_output       none
+    output           HDMI1
+}
+
+bar {
+    status_command      i3status -c ~/.i3/status
+    position          top
+    workspace_buttons yes
+    tray_output       primary
+    output            LVDS1
+
+    colors {
+        background #232323
+        statusline #cccccc
+
+        focused_workspace  #ffffff #285577
+        active_workspace   #ffffff #333333
+        inactive_workspace #888888 #222222
+        urgent_workspace   #ffffff #900000
+    }
+}
+
+exec sh ~/.i3/init.sh
