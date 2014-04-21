@@ -1,0 +1,17 @@
+[user]
+	name = deviator
+	email = code.viator@gmail.com
+[color]
+	branch = auto
+	diff = auto
+	grep = auto
+	ui = auto
+	interactive = auto
+	showbranch = auto
+	status = auto
+[credential]
+	helper = cache
+[push]
+	default = simple
+[core]
+	editor = vim

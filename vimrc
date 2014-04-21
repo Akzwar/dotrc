@@ -1,0 +1,255 @@
+" Basics {
+set nocompatible
+set noexrc
+"set cpoptions=aABceFsmq
+syntax on
+set t_Co=16
+hi MatchParen ctermfg=black ctermbg=red
+" }
+filetype off                  " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+Bundle "Hackerpilot/DCD", {'rtp': 'editors/vim'}
+
+" General {
+filetype plugin indent on
+"set autochdir
+set backspace=indent,eol,start
+"set backup
+"set backupdir=~/.vim/backup
+"set clipboard+=unnamed
+"set directory=~/.vim/tmp " swap dir
+set fileformats=unix,dos,mac
+set undolevels=100
+"set hidden
+"set iskeyword+=_,$,@,%,#
+au BufReadPost SCons* set ft=python
+au BufReadPost scons* set ft=python
+"au BufNewFile,BufRead *.cu set ft=cu
+"au BufNewFile,BufRead *.cuh set ft=cu
+au BufReadPost *.cuh set syntax=cu
+au BufReadPost *.vert set syntax=glsl
+au BufReadPost *.frag set syntax=glsl
+au BufNewFile,BufRead *.md set ft=markdown
+
+au BufNewFile,BufRead *.rb set shiftwidth=2
+au BufNewFile,BufRead *.rb set softtabstop=2
+au BufNewFile,BufRead *.rb set tabstop=2
+
+au BufNewFile,BufRead *.erb set shiftwidth=2
+au BufNewFile,BufRead *.erb set softtabstop=2
+au BufNewFile,BufRead *.erb set tabstop=2
+
+au BufNewFile,BufRead Gemfile,Rakefile set shiftwidth=2
+au BufNewFile,BufRead Gemfile,Rakefile set softtabstop=2
+au BufNewFile,BufRead Gemfile,Rakefile set tabstop=2
+
+if has('mouse')
+  set mouse=a
+endif
+"set noerrorbells
+"set whichwrap=b,s,h,l,<,>,~,[,]
+set wildmenu
+set wildmode=longest,list
+set wildignore=*.dll,*.o,*.obj,*.exe,*.pyc,*.jpg,*.JPG,*.gif,*.png
+set autowrite
+checktime
+set autoread
+autocmd CursorMovedI * if pumvisible() == 1|pclose|endif
+autocmd InsertLeave * if pumvisible() == 1|pclose|endif
+
+"inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+"inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+"inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+"inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+"inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+"inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
+" }
+
+" Vim wildmenu {
+
+" }
+
+" Vim UI {
+"set cursorcolumn
+"set cursorline
+set incsearch
+set laststatus=1
+set showcmd
+set statusline=[%F%m%r%h%w][%{&ff}]%y[%p%%][%L][%04l,%04v]
+set ruler
+set ruf=[%F%m%r%h%w][%{&ff}]%y[%p%%][%04l,%04v]
+"set lazyredraw
+set linespace=0
+"set list
+"set listchars=tab:>-,trail:-
+set matchtime=0
+set nohlsearch
+"set nostartofline
+set novisualbell
+set number
+set numberwidth=5
+set report=0
+set scrolloff=5
+set scroll=15
+"set shortmess=aOstT
+set showmatch
+set sidescrolloff=5
+" }
+
+" Text Formatting/Layout {
+"set completeopt=
+set textwidth=80
+set expandtab
+set formatoptions=
+set ignorecase
+set smartcase
+"set infercase
+set nowrap
+set shiftround
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set autoindent
+set smartindent
+nnoremap <F9> :set invpaste paste?<CR>
+set pastetoggle=<F9>
+set showmode
+" }
+
+" F2 to save
+nmap <F2> :wa<cr>
+vmap <F2> <esc>:wa<cr>
+imap <F2> <esc>:wa<cr>a
+
+" F3 for new tab
+imap <F3> <esc>:tabnew .<CR>
+nmap <F3> <esc>:tabnew .<CR>
+vmap <F3> <esc>:tabnew .<CR>
+
+imap <F4> <esc>:vsp .<CR>
+nmap <F4> <esc>:vsp .<CR>
+vmap <F4> <esc>:vsp .<CR>
+
+" F5 to prev tab
+map <F5> :tabprev <CR>
+vmap <F5> <esc> :tabprev <CR>
+imap <F5> <esc> :tabprev <CR>
+" F6 to next tab
+map <F6> :tabnext <CR>
+vmap <F6> <esc> :tabnext <CR>
+imap <F6> <esc> :tabnext <CR>
+
+"map <F9> :make<cr>
+"vmap <F9> <esc>:make<cr>
+"imap <F9> <esc>:make<cr>i
+
+"automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
+
+set wildmenu
+set wcm=<Tab>
+"menu Exec.GForth    :!gforth % <CR>
+"menu Exec.Perl      :!perl % <CR>
+menu Exec.python    :wa <CR> :!python % <CR>
+menu Exec.python3   :wa <CR> :!python3 % <CR>
+"menu Exec.Ruby      :wa <CR> :!ruby % <CR>
+menu Exec.bash      :wa <CR> :!/bin/bash % <CR>
+menu Exec.scons     :wa <CR> :!scons <CR>
+"menu Exec.xterm     :!xterm<CR>
+"menu Exec.mc        :!mc<CR>
+"menu Exec.xterm_mc  :!xterm -e mc<CR>
+"map <F9> :emenu Exec.<Tab>
+map <F7> :cn<CR>zvzz:cc<CR>
+map <S-F7> :cp<CR>zvzz:cc<CR>
+map <F9> :wa<CR>:wall \| make <CR>
+
+set wildmenu
+set wcm=<Tab>
+menu Encoding.koi8-r  :e ++enc=koi8-r<CR>
+menu Encoding.cp1251  :e ++enc=cp1251<CR>
+menu Encoding.cp866   :e ++enc=cp866<CR>
+menu Encoding.ucs-2le :e ++enc=ucs-2le<CR>
+menu Encoding.utf-8   :e ++enc=utf-8<CR>
+map <F11> :emenu Encoding.<Tab>
+
+map <C-F12> :wa<CR>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <CR><CR>
+
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+
+"inoremap        (  (  )<Left><Left>
+"inoremap <expr> )  strpart(getline('.'), col('.'), 1) == ")" ? "\<Right>\<Right>" : ")"
+
+function BraceA()
+  let x = strpart(getline('.'), col('.')-1, 1)
+  if x == "" || x == " " || x == ")" || x == "]" || x == "}"
+    return "()\<LEFT>"
+  else
+    return "("
+  endif
+endfunction
+
+function BraceB()
+  let x = strpart(getline('.'), col('.')-1, 1)
+  if x == "" || x == " " || x == "]" || x == ")" || x == "}"
+    return "[]\<LEFT>"
+  else
+    return "["
+  endif
+endfunction
+
+"inoremap <expr> (  strpart(getline('.'), col('.')-1, 1) == "" || strpart(getline('.'), col('.')-1, 1) == " " ? "()\<Left>" : "("
+inoremap <expr> (  BraceA()
+inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+
+inoremap <expr> [  BraceB()
+inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+
+set cino=g0
+
+let g:C_FormatDate            = '%d.%m.%Y'
+let g:C_FormatTime            = '%H:%M'
+let g:C_FormatYear            = '%Y'
+
+map <S-F8> :setlocal spell spelllang=en_us,ru_yo<CR>
+imap <S-F8> <Esc>:setlocal spell spelllang=en_us,ru_yo<CR>a
+map <F8> :setlocal spell spelllang=<CR>
+imap <F8> <Esc>:setlocal spell spelllang=<CR>a
+
+set iminsert=0
+set imsearch=0
+highlight lCursor guifg=NONE guibg=Cyan
+
+"nmap <c-f> :cs find g <c-r>=expand("<cword>")<cr><cr>
+imap <c-space> <c-x><c-o>
+
+set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;!@#$%&*`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
+
+" Folding {
+set foldenable
+"set foldmarker={,}
+set foldmethod=syntax
+hi Folded ctermfg=darkcyan ctermbg=black
+"set foldopen=all
+set foldlevelstart=4
+"set foldlevel=100
+"set foldopen=block,hor,mark,percent,quickfix,tag
+"function SimpleFoldText()
+"	return getline(v:foldstart).' '
+"endfunction
+"set foldtext=SimpleForlText()
+" }
+
+" 
