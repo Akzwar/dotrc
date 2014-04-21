@@ -27,7 +27,6 @@ if has('mouse')
   set mouse=a
 endif
 
-"set noerrorbells
 "set whichwrap=b,s,h,l,<,>,~,[,]
 set wildmenu
 set wildmode=longest,list
