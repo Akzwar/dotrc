@@ -1,23 +1,15 @@
+dir = File.dirname File.absolute_path __FILE__ 
 
-files = [
-  'bashrc',
-  'gitconfig',
-  'vimrc',
-  'Xdefaults',
-]
+ls = `ls -1 #{dir}/files`
+files = ls.split
 
-if __FILE__ == $0
-  dir = File.dirname File.absolute_path __FILE__ 
-
-  files.each do |file|
-    f = "#{dir}/files/#{file}"
-    n = "#{ENV['HOME']}/.#{file}"
-    unless File.exist? n
-      File.link f, n
-      puts "link #{f} -> #{n}"
-    else
-      puts "file '#{n}' exist!"
-    end
+files.each do |file|
+  f = "#{dir}/files/#{file}"
+  n = "#{ENV['HOME']}/.#{file}"
+  unless File.exist? n
+    File.link f, n
+    puts "link #{f} -> #{n}"
+  else
+    puts "file '#{n}' exist!"
   end
-
 end
