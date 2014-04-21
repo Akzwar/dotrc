@@ -8,7 +8,10 @@ filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
+Plugin 'scrooloose/nerdtree'
+
+map <C-n> :NERDTreeToggle<CR>
 
 filetype plugin indent on
 set backspace=indent,eol,start
