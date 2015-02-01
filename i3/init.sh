@@ -11,7 +11,7 @@ xbacklight -set 100%
 numlockx on
 
 # /usr/share/X11/xkb/symbols/group
-setxkbmap -model evdev -layout 'us,ru' -option -option 'grp:lctrl_rctrl_switch,grp:lswitch'
+setxkbmap -model evdev -layout 'us,ru' -option -option 'grp:alt_shift_toggle'
 
 #ibus-daemon &
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig

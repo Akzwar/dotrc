@@ -5,10 +5,11 @@ general {
     color_good = "#00FF00"
 }
 
+order += "ethernet enp0s20u1"
 order += "wireless wlp3s0"
 order += "disk /"
 order += "volume master"
-order += "battery 1"
+order += "battery 0"
 order += "cpu_temperature 0"
 order += "time"
 
@@ -16,6 +17,11 @@ wireless wlp3s0 {
     #format_up = "W: (%quality at %essid, %bitrate) %ip"
     format_up = "W: (%quality at %essid) %ip"
     format_down = "W: down"
+}
+
+ethernet enp0s20u1 {
+    format_up = "M: %ip"
+    format_down = ""
 }
 
 volume master {
@@ -31,7 +37,7 @@ ethernet eth0 {
     format_down = "E: down"
 }
 
-battery 1 {
+battery 0 {
     #format = "BAT: %status %percentage %remaining %emptytime"
     format = "%status %remaining %percentage"
     path = "/sys/class/power_supply/BAT%d/uevent"
@@ -57,7 +63,7 @@ load {
 
 cpu_temperature 0 {
     format = "CPU T: %degrees °C"
-    path = "/sys/devices/platform/coretemp.0/temp1_input"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input"
 }
 
 disk "/" {

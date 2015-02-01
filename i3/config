@@ -22,8 +22,8 @@ for_window [class="Nautilus" instance="file_progress"] floating enable
 bindcode $mod+36 exec /usr/bin/urxvt
 
 # Mod1+Shift+q kills the current client
-bindcode $mod+Shift+24 kill
-#bindcode $mod+Shift+54 kill
+# bindcode $mod+Shift+24 kill
+bindcode $mod+Shift+54 kill
 
 # Fullscreen (Mod1+f)
 bindcode $mod+41 fullscreen
